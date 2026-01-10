@@ -1,0 +1,40 @@
+{
+  "flow": {
+    "id": "flow123",
+    "name": "Data processing flow",
+    "description": "Sample flow for fetching, processing, and storing data",
+    "start_task": "task1",
+    "tasks": [
+      {
+        "name": "task1",
+        "description": "Fetch data from source"
+      },
+      {
+        "name": "task2",
+        "description": "Process and transform data"
+      },
+      {
+        "name": "task3",
+        "description": "Store processed data"
+      }
+    ],
+    "conditions": [
+      {
+        "name": "condition_task1_result",
+        "description": "Evaluate the result of task1. If successful, proceed to task2; otherwise, end the flow.",
+        "source_task": "task1",
+        "outcome": "success",
+        "target_task_success": "task2",
+        "target_task_failure": "end"
+      },
+      {
+        "name": "condition_task2_result",
+        "description": "Evaluate the result of task2. If successful, proceed to task3; otherwise, end the flow.",
+        "source_task": "task2",
+        "outcome": "success",
+        "target_task_success": "task3",
+        "target_task_failure": "end"
+      }
+    ]
+  }
+}
