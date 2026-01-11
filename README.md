@@ -1,6 +1,6 @@
 Database Design - Approach
 ┌─────────────────────────────────────────────────────────────────┐
-│                            FLOWS                                 │
+│                            FLOWS                                │
 ├─────────────────────────────────────────────────────────────────┤
 │ PK │ id                  VARCHAR(100)                           │
 │    │ name                VARCHAR(255)         NOT NULL, INDEXED │
@@ -31,8 +31,8 @@ Database Design - Approach
 │    │ total_tasks_executed INTEGER             DEFAULT 0         │
 │    │ started_at          DATETIME             NOT NULL, INDEXED │
 │    │ completed_at        DATETIME             NULL              │
-│    │                                                             │
-│    │ FOREIGN KEY (flow_id) REFERENCES flows(id)                │
+│    │                                                            │
+│    │ FOREIGN KEY (flow_id) REFERENCES flows(id)                 │
 │    │   ON DELETE CASCADE                                        │
 └─────────────────────────────────────────────────────────────────┘
                                 │
@@ -40,7 +40,7 @@ Database Design - Approach
                                 │
                                 ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      TASK_EXECUTIONS                             │
+│                      TASK_EXECUTIONS                            │
 ├─────────────────────────────────────────────────────────────────┤
 │ PK │ id                  INTEGER              AUTO_INCREMENT    │
 │ FK │ flow_execution_id   INTEGER              NOT NULL, INDEXED │
@@ -55,7 +55,7 @@ Database Design - Approach
 │    │ error_traceback     TEXT                 NULL              │
 │    │ started_at          DATETIME             NOT NULL          │
 │    │ completed_at        DATETIME             NULL              │
-│    │                                                             │
+│    │                                                            │
 │    │ FOREIGN KEY (flow_execution_id)                            │
 │    │   REFERENCES flow_executions(id)                           │
 │    │   ON DELETE CASCADE                                        │
