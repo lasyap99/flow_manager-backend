@@ -242,7 +242,7 @@ Create a `.env` file:
 FLASK_ENV=development
 FLASK_APP=run.py
 FLASK_HOST=0.0.0.0
-FLASK_PORT=5000
+FLASK_PORT=5001
 
 # Secret Key
 SECRET_KEY=your-secret-key-here
@@ -282,7 +282,7 @@ flask db upgrade
 ### 1. Create a Flow
 
 ```bash
-curl -X POST http://localhost:5000/api/flows \
+curl -X POST http://localhost:5001/api/flows \
   -H "Content-Type: application/json" \
   -d '{
     "flow": {
@@ -317,7 +317,7 @@ curl -X POST http://localhost:5000/api/flows \
 ### 2. Execute the Flow
 
 ```bash
-curl -X POST http://localhost:5000/api/tasks/flows/data-pipeline-001/execute \
+curl -X POST http://localhost:5001/api/tasks/flows/data-pipeline-001/execute \
   -H "Content-Type: application/json" \
   -d '{
     "input_context": {
@@ -329,7 +329,7 @@ curl -X POST http://localhost:5000/api/tasks/flows/data-pipeline-001/execute \
 ### 3. Check Execution Status
 
 ```bash
-curl http://localhost:5000/api/executions/1?include_tasks=true
+curl http://localhost:5001/api/executions/1?include_tasks=true
 ```
 
 ## Response Examples
@@ -410,7 +410,7 @@ pytest --cov=app tests/
 pip install gunicorn
 
 # Run with gunicorn
-gunicorn -w 4 -b 0.0.0.0:5000 run:app
+gunicorn -w 4 -b 0.0.0.0:5001 run:app
 ```
 
 ### Using Docker
@@ -424,8 +424,8 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "run:app"]
+EXPOSE 5001
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5001", "run:app"]
 ```
 
 ## Logging
